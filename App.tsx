@@ -1,131 +1,92 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 
-const SignInScreen = () => {
-  const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [useremail, setUseremail] = useState('');
-  const [address, setAddress] = useState('');
-  const [phonenumber, setPhonenumber] = useState('');
-
-  const handleSignIn = () => {
-    // Lakukan proses autentikasi di sini, misalnya dengan mengirimkan data ke backend
-    console.log('Name:', name);
-    console.log('Username:', username);
-    console.log('Email:', useremail);
-    console.log('Address', address);
-    console.log('Phone Number:', phonenumber);
-    // Implementasi autentikasi lebih lanjut di sini
-  };
-
+const App = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Registration</Text>
+      <View style={styles.header}>
+        <Text style={styles.text}>WELCOME</Text>
       </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Name</Text>
+      <View>
+        <Text style={styles.textInput}>Username</Text>
+        <TextInput placeholder="Masukan Nama anda" style={styles.input} />
+        <Text style={styles.textInput}>Password</Text>
         <TextInput
+          placeholder="Masukan Password anda"
           style={styles.input}
-          placeholder="Masukkan nama lengkap anda"
-          onChangeText={text => setName(text)}
-          value={name}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Username</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukkan Username anda"
-          onChangeText={text => setUsername(text)}
-          value={username}
-          secureTextEntry={true}
-        />
-        </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukkan Email anda"
-          onChangeText={text => setUseremail(text)}
-          value={useremail}
-          secureTextEntry={true}
-        />
-        </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Address</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukkan Alamat anda"
-          onChangeText={text => setAddress(text)}
-          value={address}
-          secureTextEntry={true}
-        />
-        </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Phone Number</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukkan Nomor Telfon anda"
-          onChangeText={text => setPhonenumber(text)}
-          value={phonenumber}
+          autoCapitalize="none"
           secureTextEntry={true}
         />
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
-        <Text style={styles.buttonText}>Register</Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.textButton}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
+export default App;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingHorizontal: 45,
-    paddingTop: 30,
-    backgroundColor: 'white',
+    paddingTop: 40,
+    paddingLeft: 25,
+    paddingRight: 25,
   },
-  titleContainer: {
-    alignSelf: 'flex-start',
+
+  header: {
+    marginBottom: 30,
   },
-  title: {
-    fontSize: 40,
-    marginBottom: 10,
+
+  text: {
+    fontSize: 24,
     fontWeight: 'bold',
-    color: 'black',
+    color: '#000000',
   },
-  inputContainer: {
-    width: '100%',
-    marginBottom: 20,
-  },
-  label: {
-    marginBottom: 5,
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
+
   input: {
     width: '100%',
-    height: 50,
-    borderColor: 'grey',
     borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-  },
-  button: {
-    width: '100%',
-    backgroundColor: 'purple',
-    paddingVertical: 12,
-    borderRadius: 10,
+    borderColor: '#959696',
     alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    color: '#7c7d7e',
+    marginBottom: 20,
+    padding: 10,
   },
-  buttonText: {
-    color: '#fff',
+
+  textInput: {
     fontSize: 16,
+    color: '#000000',
+    marginBottom: 5,
+  },
+
+  button: {
+    color: 'red',
+    backgroundColor: '#e87613',
+    borderWidth: 1,
+    alignItems: 'center',
+    marginTop: 20,
+    borderRadius: 10,
+    width: '100%',
+    height: 45,
+    borderColor: '#7c7d7e',
+  },
+
+  textButton: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500',
+    textAlign: 'center',
+    padding: 8,
   },
 });
-
-export default SignInScreen;
